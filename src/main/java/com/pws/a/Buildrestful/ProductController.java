@@ -7,6 +7,9 @@ package com.pws.a.Buildrestful;
 import Modal.Product;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,6 +32,14 @@ public class ProductController {
         
         //Menyimpan data
         productRepo.put(honey.getId(),honey);
+    }
+    
+    //Membuat URL pemanggilan getProdcut
+    @RequestMapping("/products")
+    //Method untuk mengambil data
+    public ResponseEntity<Object> getProduct()
+    {
+        return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
     }
     
 }
