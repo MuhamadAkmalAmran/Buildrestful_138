@@ -10,4 +10,8 @@ package Modal;
  */
 public class Product {
     
+    //variable id dan name
+    private String id;
+    private String name;
+    
 }
