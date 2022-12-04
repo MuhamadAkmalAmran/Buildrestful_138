@@ -18,5 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     //method untuk menyimpan class Product
     private static Map<String, Product> productRepo = new HashMap<>();
+    static
+    {
+        //membuat pemanggilan class product
+        Product honey = new Product();
+    }
     
 }
