@@ -22,6 +22,13 @@ public class ProductController {
     {
         //membuat pemanggilan class product
         Product honey = new Product();
+        
+        //Menambahkan data
+        honey.setId("1");
+        honey.setName("Honey");
+        
+        //Menyimpan data
+        productRepo.put(honey.getId(),honey);
     }
     
 }
