@@ -4,6 +4,9 @@
  */
 package com.pws.a.Buildrestful;
 
+import Modal.Product;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 //Digunakan untuk mendefinisikan RESTful 
 @RestController
 public class ProductController {
-    
+    //method untuk menyimpan class Product
+    private static Map<String, Product> productRepo = new HashMap<>();
     
 }
