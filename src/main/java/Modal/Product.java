@@ -14,4 +14,16 @@ public class Product {
     private String id;
     private String name;
     
+    //method untuk mengambil variabel if
+    public String getId()
+    {
+        return id;
+    }
+    
+    //method untuk memberikan nilai
+    public void setId()
+    {
+        this.id = id;
+    }
+    
 }
