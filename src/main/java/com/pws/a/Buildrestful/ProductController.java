@@ -62,6 +62,11 @@ public class ProductController {
     //method untuk mengubah data berdasarkan id
     public ResponseEntity<Object> updateProduct (@PathVariable("id")String id, @RequestBody Product product)
     {
+        //execption ketika mengubah data yg belum ada
+        if (!productRepo.containsKey(id)) {
+            return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
+            
+        } else {
         //mengubah data berdasarkan id
         productRepo.remove(id);
         product.setId(id);
@@ -71,5 +76,8 @@ public class ProductController {
         
         //menampilkan status
         return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
+        }
     }
+    
+    
 }
