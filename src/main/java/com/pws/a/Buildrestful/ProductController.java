@@ -93,12 +93,14 @@ public class ProductController {
     //method untuk menghapus data
     public ResponseEntity<Object> deleteProduct(@PathVariable("id")String id)
     {
+        //execption ketika menghapus data yg tdk ditemukan
         if(!productRepo.containsKey(id))
         {
             return new ResponseEntity<>("Product Not Found", HttpStatus.NOT_FOUND);
         }
         else
         {
+            //menghapus data by id
             productRepo.remove(id);
             return new ResponseEntity<>("Product is deleted successfully", HttpStatus.OK);
         }
