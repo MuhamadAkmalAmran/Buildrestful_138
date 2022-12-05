@@ -46,7 +46,7 @@ public class ProductController {
     }
     
     //menambahkan product
-    @RequestMapping(value = "/prodcuts", method = RequestMethod.POST)
+    @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ResponseEntity<Object> createProduct(@RequestBody Product product)
     {
         //execption ketika createProduct menggunakan id yg telah dipakai
@@ -57,10 +57,10 @@ public class ProductController {
         else
         {
             //menyimpan product
-        productRepo.put(product.getId(), product);
+            productRepo.put(product.getId(), product);
         
-        //menampilkan status
-        return new ResponseEntity<>("Product is created successfully",HttpStatus.CREATED);
+            //menampilkan status
+            return new ResponseEntity<>("Product is created successfully",HttpStatus.CREATED);
         }
     }
     
@@ -85,6 +85,16 @@ public class ProductController {
         //menampilkan status
         return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
         }
+    }
+    
+    //menghapus data
+    @RequestMapping(value = "/products{id}", method = RequestMethod.DELETE)
+    
+    //method untuk menghapus data
+    public ResponseEntity<Object> deleteProduct(@PathVariable("id")String id)
+    {
+        productRepo.remove(id);
+        return new ResponseEntity<>("Product is deleted successfully", HttpStatus.OK);
     }
     
     
