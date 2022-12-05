@@ -49,11 +49,19 @@ public class ProductController {
     @RequestMapping(value = "/prodcuts", method = RequestMethod.POST)
     public ResponseEntity<Object> createProduct(@RequestBody Product product)
     {
-        //menyimpan product
+        //execption ketika createProduct menggunakan id yg telah dipakai
+        if(productRepo.containsKey(product.getId()))
+        {
+            return new ResponseEntity<>("Product id already used", HttpStatus.OK);
+        }
+        else
+        {
+            //menyimpan product
         productRepo.put(product.getId(), product);
         
         //menampilkan status
         return new ResponseEntity<>("Product is created successfully",HttpStatus.CREATED);
+        }
     }
     
     //memperbaharui data
