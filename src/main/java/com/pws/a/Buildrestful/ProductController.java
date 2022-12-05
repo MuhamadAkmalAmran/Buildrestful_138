@@ -88,13 +88,21 @@ public class ProductController {
     }
     
     //menghapus data
-    @RequestMapping(value = "/products{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
     
     //method untuk menghapus data
     public ResponseEntity<Object> deleteProduct(@PathVariable("id")String id)
     {
-        productRepo.remove(id);
-        return new ResponseEntity<>("Product is deleted successfully", HttpStatus.OK);
+        if(!productRepo.containsKey(id))
+        {
+            return new ResponseEntity<>("Product Not Found", HttpStatus.NOT_FOUND);
+        }
+        else
+        {
+            productRepo.remove(id);
+            return new ResponseEntity<>("Product is deleted successfully", HttpStatus.OK);
+        }
+        
     }
     
     
