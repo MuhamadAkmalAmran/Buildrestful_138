@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,5 +54,22 @@ public class ProductController {
         
         //menampilkan status
         return new ResponseEntity<>("Product is created successfully",HttpStatus.CREATED);
+    }
+    
+    //memperbaharui data
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
+    
+    //method untuk mengubah data berdasarkan id
+    public ResponseEntity<Object> updateProduct (@PathVariable("id")String id, @RequestBody Product product)
+    {
+        //mengubah data berdasarkan id
+        productRepo.remove(id);
+        product.setId(id);
+        
+        //menyimpan data
+        productRepo.put(id, product);
+        
+        //menampilkan status
+        return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
     }
 }
