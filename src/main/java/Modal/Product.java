@@ -64,13 +64,12 @@ public class Product {
     //method untuk mengambil variabel name
     public Double getTotal()
     {
-        return total ;
+        return total;
     }
     
     //method untuk memberikan nilai
-    public void setTotal()
+    public void setTotal(Double total)
     {
-        this.total = price - (price *disc);
+        this.total = total;
     }
-    
 }

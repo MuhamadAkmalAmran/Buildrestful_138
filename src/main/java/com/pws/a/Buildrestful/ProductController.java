@@ -34,7 +34,8 @@ public class ProductController {
         honey.setName("Honey");
         honey.setPrice(10000.00);
         honey.setDisc(0.5);
-        honey.setTotal();
+        Double total1 = honey.getPrice() - (honey.getPrice()*honey.getDisc());
+        honey.setTotal(total1);
         
         //Menyimpan data
         productRepo.put(honey.getId(),honey);
@@ -60,8 +61,10 @@ public class ProductController {
         else
         {
             //menyimpan product
-            product.setTotal();
             productRepo.put(product.getId(), product);
+            //perhitungan discount product
+            Double total1 = product.getPrice() - (product.getPrice() * product.getDisc());
+        product.setTotal(total1)  ;
         
             //menampilkan status
             return new ResponseEntity<>("Product is created successfully",HttpStatus.CREATED);
@@ -82,7 +85,9 @@ public class ProductController {
         //mengubah data berdasarkan id
         productRepo.remove(id);
         product.setId(id);
-        product.setTotal();
+        //perhitungan discount product
+        Double total1 = product.getPrice() - (product.getPrice() * product.getDisc());
+        product.setTotal(total1)  ;
         
         //menyimpan data
         productRepo.put(id, product);
