@@ -61,9 +61,8 @@ public class ProductController {
         else
         {
             //menyimpan product
-            productRepo.put(product.getId(), product);
-            //perhitungan discount product
-            Double total1 = product.getPrice() - (product.getPrice() * product.getDisc());
+            productRepo.put(product.getId(), product); 
+           Double total1 = product.getPrice() - (product.getPrice() * product.getDisc());
         product.setTotal(total1)  ;
         
             //menampilkan status
@@ -91,7 +90,6 @@ public class ProductController {
         
         //menyimpan data
         productRepo.put(id, product);
-        
         //menampilkan status
         return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
         }
