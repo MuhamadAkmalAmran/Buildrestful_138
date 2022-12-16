@@ -32,6 +32,9 @@ public class ProductController {
         //Menambahkan data
         honey.setId("1");
         honey.setName("Honey");
+        honey.setPrice(10000.00);
+        honey.setDisc(0.5);
+        honey.setTotal();
         
         //Menyimpan data
         productRepo.put(honey.getId(),honey);
@@ -41,7 +44,7 @@ public class ProductController {
     @RequestMapping("/products")
     //Method untuk mengambil data
     public ResponseEntity<Object> getProduct()
-    {
+    { 
         return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
     }
     
@@ -57,6 +60,7 @@ public class ProductController {
         else
         {
             //menyimpan product
+            product.setTotal();
             productRepo.put(product.getId(), product);
         
             //menampilkan status
@@ -78,6 +82,7 @@ public class ProductController {
         //mengubah data berdasarkan id
         productRepo.remove(id);
         product.setId(id);
+        product.setTotal();
         
         //menyimpan data
         productRepo.put(id, product);
